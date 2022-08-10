@@ -1,9 +1,7 @@
 package com.example.practice_razorpay_one.service;
 
 import com.example.practice_razorpay_one.entity.PaymentDetails;
-import com.example.practice_razorpay_one.entity.RazorpayPayment;
 import com.example.practice_razorpay_one.entity.RazorpayTransfer;
-import com.example.practice_razorpay_one.mapper.RazorpayPaymentMapper;
 import com.example.practice_razorpay_one.mapper.RazorpayTransferMapper;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -47,5 +45,29 @@ public class RazorpayPaymentTransferImpl implements RazorpayPaymentTransfer{
 
         }
         return null;
+    }
+
+    @Override
+    public RazorpayTransfer fetchTransferById() {
+
+
+        RazorpayTransfer razorpayTransfer = null;
+        try {
+            RazorpayClient razorpay = new RazorpayClient("rzp_test_9bS6OTCEBbOIUk", "ATwiBqhJoLo2TIy1pMkILX39");
+            String transferId = "trf_K37FE9OVYj8tz6";
+            Transfer transfer = razorpay.transfers.fetch(transferId);
+            razorpayTransfer = razorpayTransferMapper.mapTransfer(transfer);
+            System.out.println(razorpayTransfer);
+        } catch (RazorpayException e) {
+            log.error("error in razorpay fetch transfer api paymentId {}");
+            throw new RuntimeException(e);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            log.error("exception while fetching transfers", exception);
+        }
+
+
+        return razorpayTransfer;
+
     }
 }

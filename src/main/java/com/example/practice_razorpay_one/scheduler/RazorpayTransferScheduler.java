@@ -18,6 +18,7 @@ public class RazorpayTransferScheduler {
     @Scheduled(fixedRate = 10000)
     public void fetchTransfer(){
        // collectionService.fetchPayment();
-        razorpayPaymentTransfer.fetchTransfer();
+       // razorpayPaymentTransfer.fetchTransfer();
+        razorpayPaymentTransfer.fetchTransferById();
     }
 }
