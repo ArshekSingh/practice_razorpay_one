@@ -14,8 +14,6 @@ public class RazorpayTransferMapper {
     public RazorpayTransfer mapTransfer(Transfer transfer){
 
 
-       //List<RazorpayTransfer> razorpayTransfers = new ArrayList<>();
-
         RazorpayTransfer razorpayTransfer = new RazorpayTransfer();
 
         if (!transfer.toJson().isNull("id")) razorpayTransfer.setId(transfer.get("id"));
@@ -40,7 +38,6 @@ public class RazorpayTransferMapper {
         if (!transfer.toJson().isNull("year")) razorpayTransfer.setSettlement_status(transfer.get("year"));
         if (!transfer.toJson().isNull("month")) razorpayTransfer.setSettlement_status(transfer.get("month"));
         if (!transfer.toJson().isNull("day")) razorpayTransfer.setSettlement_status(transfer.get("day"));
-       // razorpayTransfers.add(razorpayTransfer);
 
         return razorpayTransfer;
 

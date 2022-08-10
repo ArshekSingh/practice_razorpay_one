@@ -20,22 +20,22 @@ public class SavePaymentServiceImpl implements SavePaymentService {
     private PaymentRepo paymentRepo;
 
     @Transactional
-    public Response<PaymentDetails> savePayment(RazorpayPayment transfer) {
+    public Response<PaymentDetails> savePayment(RazorpayPayment payment) {
         Response<PaymentDetails> response = new Response();
         try {
-            PaymentDetails transferPayment = new PaymentDetails();
-            transferPayment.setId(transfer.getId());
-            transferPayment.setEntity(transfer.getEntity());
-            transferPayment.setStatus(transfer.getStatus());
-            transferPayment.setAmount(transfer.getAmount());
-            transferPayment.setCurrency(transfer.getCurrency());
-            transferPayment.setCreatedAt(transfer.getCreatedAt());
-            transferPayment.setSettlement_status(transfer.getSettlement_status());
-            transferPayment = paymentRepo.save(transferPayment);
+            PaymentDetails paymentDetails = new PaymentDetails();
+            paymentDetails.setId(payment.getId());
+            paymentDetails.setEntity(payment.getEntity());
+            paymentDetails.setStatus(payment.getStatus());
+            paymentDetails.setAmount(payment.getAmount());
+            paymentDetails.setCurrency(payment.getCurrency());
+            paymentDetails.setCreatedAt(payment.getCreatedAt());
+            paymentDetails.setSettlement_status(payment.getSettlement_status());
+            paymentDetails = paymentRepo.save(paymentDetails);
 
             //add logs
             response.setCode(HttpStatus.OK.value());
-            response.setData(transferPayment);
+            response.setData(paymentDetails);
             response.setMessage("Success");
             return response;
 
