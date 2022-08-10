@@ -3,13 +3,12 @@ package com.example.practice_razorpay_one.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-public class RazorpayTransfer {
+public class RazorpayPayment {
     private String id;
     private String entity;
     private String status;
