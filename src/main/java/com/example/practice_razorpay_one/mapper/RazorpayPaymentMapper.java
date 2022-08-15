@@ -23,6 +23,8 @@ public class RazorpayPaymentMapper {
             if (!payment.toJson().isNull("amount")) razorpayPayment.setAmount(payment.get("amount"));
             if (!payment.toJson().isNull("currency")) razorpayPayment.setCurrency(payment.get("currency"));
             if (!payment.toJson().isNull("status")) razorpayPayment.setStatus(payment.get("status"));
+            if (!payment.toJson().isNull("source")) razorpayPayment.setSource(payment.get("source"));
+            if (!payment.toJson().isNull("transfer_status")) razorpayPayment.setTransfer_status(payment.get("transfer_status"));
             if (!payment.toJson().isNull("order_id")) razorpayPayment.setOrderId(payment.get("order_id"));
             if (!payment.toJson().isNull("method")) razorpayPayment.setMethod(payment.get("method"));
             if (!payment.toJson().isNull("description")) razorpayPayment.setDescription(payment.get("description"));

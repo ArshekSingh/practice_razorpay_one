@@ -1,10 +1,12 @@
-package com.example.practice_razorpay_one.service;
+package com.example.practice_razorpay_one.service.serviceimpl;
 
 
 import com.example.practice_razorpay_one.entity.PaymentDetails;
 import com.example.practice_razorpay_one.entity.RazorpayPayment;
 import com.example.practice_razorpay_one.mapper.RazorpayPaymentMapper;
 import com.example.practice_razorpay_one.response.Response;
+import com.example.practice_razorpay_one.service.FetchPaymentService;
+import com.example.practice_razorpay_one.service.SavePaymentService;
 import com.razorpay.Payment;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -21,7 +23,7 @@ import java.util.List;
 public class FetchPaymentServiceImpl implements FetchPaymentService {
 
     @Autowired
-    private RazorpayPaymentMapper razorpayTransferMapper;
+    private RazorpayPaymentMapper razorpayPaymentMapper;
 
     @Autowired
     private SavePaymentService savePaymentService;
@@ -31,23 +33,23 @@ public class FetchPaymentServiceImpl implements FetchPaymentService {
         this.savePaymentService = savePaymentService;
     }
 
-    public List<PaymentDetails> fetchPayment() {
-        List<RazorpayPayment> transferList = null;
+    public List<RazorpayPayment> fetchPayment() {
+        List<RazorpayPayment> paymentList = null;
         try {
             RazorpayClient razorpay = new RazorpayClient("rzp_test_9bS6OTCEBbOIUk", "ATwiBqhJoLo2TIy1pMkILX39");
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("count", 100);
-            List<Payment> transfers = razorpay.payments.fetchAll(jsonObject);
-            transferList = razorpayTransferMapper.mapPayments(transfers);
-            System.out.println(transferList);
-            for (RazorpayPayment transfer : transferList) {
-                Response<PaymentDetails> paymentDetailsResponse = savePaymentService.savePayment(transfer);
+            List<Payment> payments = razorpay.payments.fetchAll(jsonObject);
+            paymentList = razorpayPaymentMapper.mapPayments(payments);
+            System.out.println(paymentList);
+            for (RazorpayPayment payment : paymentList) {
+                Response<PaymentDetails> paymentDetailsResponse = savePaymentService.savePayment(payment);
                 //If the request is successful
                 if (paymentDetailsResponse.getCode() == HttpStatus.OK.value()) {
-                    log.info("Payment is fetched");
+                    log.info("Payment is payment is stored in DB.");
 
                 } else {
-                    log.error("Error in fetching payment");//log why the save failed
+                    log.error("Error in storing payment in DB");//log why the save failed
                 }
             }
         } catch (RazorpayException razorpayException) {
@@ -57,7 +59,7 @@ public class FetchPaymentServiceImpl implements FetchPaymentService {
             exception.printStackTrace();
             log.error("exception while fetching payments", exception);
         }
-        return null;
+        return paymentList;
     }
 
 }

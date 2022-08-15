@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @ComponentScan("com.example.practice_razorpay_one")
 @EnableScheduling
-@EnableJpaRepositories
+@EnableJpaRepositories("com.example.practice_razorpay_one")
 public class PracticeRazorpayOneApplication {
 
 	public static void main(String[] args) {

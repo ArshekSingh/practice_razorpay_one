@@ -21,6 +21,7 @@ public class RazorpayTransferMapper {
         if (!transfer.toJson().isNull("amount")) razorpayTransfer.setAmount(transfer.get("amount"));
         if (!transfer.toJson().isNull("currency")) razorpayTransfer.setCurrency(transfer.get("currency"));
         if (!transfer.toJson().isNull("status")) razorpayTransfer.setStatus(transfer.get("status"));
+        if (!transfer.toJson().isNull("payment_id")) razorpayTransfer.setPayment_id(transfer.get("payment_id"));
         if (!transfer.toJson().isNull("order_id")) razorpayTransfer.setOrderId(transfer.get("order_id"));
         if (!transfer.toJson().isNull("method")) razorpayTransfer.setMethod(transfer.get("method"));
         if (!transfer.toJson().isNull("description")) razorpayTransfer.setDescription(transfer.get("description"));

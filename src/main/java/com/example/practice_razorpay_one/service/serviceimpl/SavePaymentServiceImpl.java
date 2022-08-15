@@ -1,10 +1,11 @@
-package com.example.practice_razorpay_one.service;
+package com.example.practice_razorpay_one.service.serviceimpl;
 
 
 import com.example.practice_razorpay_one.entity.PaymentDetails;
 import com.example.practice_razorpay_one.entity.RazorpayPayment;
 import com.example.practice_razorpay_one.repository.PaymentRepo;
 import com.example.practice_razorpay_one.response.Response;
+import com.example.practice_razorpay_one.service.SavePaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

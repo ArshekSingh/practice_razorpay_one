@@ -1,8 +1,9 @@
-package com.example.practice_razorpay_one.service;
+package com.example.practice_razorpay_one.service.serviceimpl;
 
 import com.example.practice_razorpay_one.entity.PaymentDetails;
 import com.example.practice_razorpay_one.entity.RazorpayTransfer;
 import com.example.practice_razorpay_one.mapper.RazorpayTransferMapper;
+import com.example.practice_razorpay_one.service.RazorpayPaymentTransfer;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
 import com.razorpay.Transfer;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class RazorpayPaymentTransferImpl implements RazorpayPaymentTransfer{
+public class RazorpayPaymentTransferImpl implements RazorpayPaymentTransfer {
 
 
     @Autowired

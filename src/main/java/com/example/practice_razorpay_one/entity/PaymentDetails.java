@@ -20,6 +20,10 @@ public class PaymentDetails {
     @Column
     private String status;
     @Column
+    private String source;
+    @Column
+    private String transfer_status;
+    @Column
     private Integer amount;
     @Column
     private String currency;

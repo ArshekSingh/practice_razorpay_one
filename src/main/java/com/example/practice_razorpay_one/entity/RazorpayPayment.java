@@ -13,6 +13,7 @@ public class RazorpayPayment {
     private String entity;
     private String status;
     private String source;
+    private String transfer_status;
     private String recipient;
     private Integer amount;
     private String currency;
